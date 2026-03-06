@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silent Prophecy | Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #ffffff; margin: 0; overflow-x: hidden; }
+        .hero-video-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+        .hero-video { width: 100%; height: 100%; object-fit: cover; }
+        .video-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 1; }
+        .product-card img { transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+        .product-card:hover img { transform: scale(1.08); }
+        html { scroll-behavior: smooth; }
+        ::-webkit-scrollbar { display: none; }
+        .nav-blur { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="fixed top-0 w-full z-50 flex justify-between items-center p-6 md:p-10 nav-blur bg-black/20 border-b border-white/5">
+        <a href="index.html" class="text-xl font-bold tracking-[0.3em] uppercase">Silent Prophecy</a>
+        <div class="flex items-center space-x-8 text-[10px] uppercase tracking-[0.3em]">
+            <a href="index.html#shop" class="hover:text-gray-400 transition">Collections</a>
+            <a href="the-prophecy.html" class="hover:text-gray-400 transition">La Vision</a>
+            <a href="contact.html" class="hover:text-gray-400 transition">Contact</a>
+            <div id="cart" class="cursor-pointer border border-white/20 px-5 py-2 hover:bg-white hover:text-black transition">Panier (0)</div>
+        </div>
+    </nav>
+
+    <header class="relative h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden">
+        <div class="hero-video-container">
+            <div class="video-overlay"></div>
+            <video autoplay loop muted playsinline class="hero-video">
+                <source src="video.mp4" type="video/mp4">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-dark-smoke-background-1250-large.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="relative z-10">
+            <h1 class="text-7xl md:text-[13rem] font-bold tracking-tighter uppercase leading-none mb-4">Silent</h1>
+            <p class="text-white/60 text-xs md:text-sm uppercase tracking-[0.7em] mb-12">The prophecy is silent until it is worn</p>
+            <a href="#shop" class="border border-white px-16 py-5 text-[10px] uppercase tracking-[0.5em] font-bold hover:bg-white hover:text-black transition duration-500">Découvrir</a>
+        </div>
+    </header>
+
+    <main id="shop" class="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 bg-white/5">
+        <a href="product.html" class="product-card relative group bg-[#0d0d0d] overflow-hidden">
+            <div class="aspect-[3/4] overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?q=80&w=1200" class="w-full h-full object-cover grayscale group-hover:grayscale-0">
+            </div>
+            <div class="p-10 flex justify-between items-end bg-black">
+                <div><p class="text-[9px] text-gray-500 uppercase font-bold">350GSM</p><h3 class="text-base uppercase">T-Shirt "Prophecy"</h3></div>
+                <span class="text-lg font-light">65€</span>
+            </div>
+        </a>
+        <a href="product.html" class="product-card relative group bg-[#0d0d0d] overflow-hidden">
+            <div class="aspect-[3/4] overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?q=80&w=1200" class="w-full h-full object-cover grayscale group-hover:grayscale-0">
+            </div>
+            <div class="p-10 flex justify-between items-end bg-black">
+                <div><p class="text-[9px] text-gray-500 uppercase font-bold">350GSM</p><h3 class="text-base uppercase">T-Shirt "Prophecy"</h3></div>
+                <span class="text-lg font-light">65€</span>
+            </div>
+        </a>
+        <a href="product.html" class="product-card relative group bg-[#0d0d0d] overflow-hidden">
+            <div class="aspect-[3/4] overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?q=80&w=1200" class="w-full h-full object-cover grayscale group-hover:grayscale-0">
+            </div>
+            <div class="p-10 flex justify-between items-end bg-black">
+                <div><p class="text-[9px] text-gray-500 uppercase font-bold">350GSM</p><h3 class="text-base uppercase">T-Shirt "Prophecy"</h3></div>
+                <span class="text-lg font-light">65€</span>
+            </div>
+        </a>
+    </main>
+
+    <footer class="py-20 px-10 border-t border-white/5 mt-10">
+        <div class="opacity-10 text-6xl md:text-9xl font-bold uppercase mb-12 text-center">Silent Prophecy</div>
+        <div class="mt-10 text-center text-[8px] text-gray-700 tracking-[1em]">© 2026 SILENT PROPHECY</div>
+    </footer>
+
+    <script>
+        let count = 0;
+        document.getElementById('cart').addEventListener('click', () => {
+            count++;
+            document.getElementById('cart').innerText = `Panier (${count})`;
+        });
+    </script>
+</body>
+</html>

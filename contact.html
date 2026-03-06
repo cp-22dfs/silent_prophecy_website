@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silent Prophecy | Contact</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #ffffff; }
+        .nav-blur { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="fixed top-0 w-full z-50 flex justify-between items-center p-6 md:p-10 nav-blur bg-black/20 border-b border-white/5">
+        <a href="index.html" class="text-xl font-bold tracking-[0.3em] uppercase">Silent Prophecy</a>
+        <div class="flex items-center space-x-8 text-[10px] uppercase tracking-[0.3em]">
+            <a href="index.html#shop" class="hover:text-gray-400 transition">Collections</a>
+            <a href="the-prophecy.html" class="hover:text-gray-400 transition">La Vision</a>
+            <a href="contact.html" class="hover:text-gray-400 transition">Contact</a>
+            <div id="cart" class="cursor-pointer border border-white/20 px-5 py-2 hover:bg-white hover:text-black transition">Panier (0)</div>
+        </div>
+    </nav>
+
+    <main class="pt-40 pb-20 px-6 max-w-2xl mx-auto">
+        <h1 class="text-4xl font-bold uppercase mb-12 text-center">Contact</h1>
+        <form class="space-y-6">
+            <input type="text" placeholder="NOM" class="w-full bg-[#111] border border-white/10 p-5 text-xs tracking-widest outline-none focus:border-white">
+            <input type="email" placeholder="EMAIL" class="w-full bg-[#111] border border-white/10 p-5 text-xs tracking-widest outline-none focus:border-white">
+            <textarea rows="6" placeholder="MESSAGE" class="w-full bg-[#111] border border-white/10 p-5 text-xs tracking-widest outline-none focus:border-white"></textarea>
+            <button class="w-full bg-white text-black py-5 text-xs font-bold uppercase tracking-widest">Envoyer</button>
+        </form>
+    </main>
+</body>
+</html>
