@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Silent Prophecy | Produit</title>
+    <title>Silent Prophecy | Détails</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #ffffff; }
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #ffffff; margin: 0; }
         .nav-blur { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
         ::-webkit-scrollbar { display: none; }
+        .sticky-info { position: sticky; top: 120px; }
     </style>
 </head>
 <body class="antialiased">
@@ -20,26 +21,90 @@
             <a href="collections.html" class="hover:text-gray-400 transition">Collections</a>
             <a href="the-prophecy.html" class="hover:text-gray-400 transition">La Vision</a>
             <a href="contact.html" class="hover:text-gray-400 transition">Contact</a>
-            <div id="cart" class="cursor-pointer border border-white/20 px-5 py-2 hover:bg-white hover:text-black transition">Panier (0)</div>
+            <div id="cart" class="border border-white/20 px-5 py-2">Panier (0)</div>
         </div>
     </nav>
 
-    <main class="pt-40 pb-20 px-6 max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-12">
-        <div class="md:col-span-8 space-y-4">
-            <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?q=80&w=2000" class="w-full grayscale">
-        </div>
-        <div class="md:col-span-4 sticky top-40 h-fit space-y-10">
-            <h1 class="text-4xl font-bold uppercase tracking-tighter">T-Shirt "Prophecy"</h1>
-            <p class="text-2xl font-light">65.00€</p>
-            <div class="text-sm text-gray-400 space-y-4 italic"><p>350g/m² Organic Cotton. Oversized fit.</p></div>
-            <div class="grid grid-cols-4 gap-2">
-                <button class="border border-white/20 py-3 hover:border-white transition">S</button>
-                <button class="border border-white/20 py-3 hover:border-white transition">M</button>
-                <button class="border border-white/20 py-3 hover:border-white transition">L</button>
-                <button class="border border-white/20 py-3 hover:border-white transition">XL</button>
+    <main class="pt-32 pb-20 px-6 md:px-10 max-w-[1600px] mx-auto">
+        <div id="product-content" class="grid grid-cols-1 md:grid-cols-12 gap-12">
+            
+            <div class="md:col-span-8 space-y-6">
+                <div id="main-image-container"></div>
+                <div id="detail-images-grid" class="grid grid-cols-3 gap-4"></div>
             </div>
-            <button onclick="alert('Ajouté')" class="w-full bg-white text-black py-5 uppercase font-bold tracking-widest text-xs">Ajouter au panier</button>
+
+            <div class="md:col-span-4">
+                <div class="sticky-info space-y-10">
+                    <div>
+                        <h1 id="product-title" class="text-4xl uppercase tracking-tighter font-bold mb-2 text-white">Produit</h1>
+                        <p id="product-price" class="text-2xl font-light text-gray-400">00€</p>
+                    </div>
+
+                    <div id="product-desc" class="text-sm text-gray-400 leading-relaxed space-y-2"></div>
+
+                    <div class="space-y-4">
+                        <p class="text-[10px] uppercase tracking-widest text-gray-600">Taille</p>
+                        <div class="flex gap-2">
+                            <button class="flex-1 border border-white/20 py-4 text-xs hover:border-white transition">S</button>
+                            <button class="flex-1 border border-white/20 py-4 text-xs hover:border-white transition">M</button>
+                            <button class="flex-1 border border-white/20 py-4 text-xs hover:border-white transition">L</button>
+                            <button class="flex-1 border border-white/20 py-4 text-xs hover:border-white transition">XL</button>
+                        </div>
+                    </div>
+
+                    <button class="w-full bg-white text-black py-6 uppercase tracking-[0.4em] text-[10px] font-bold hover:bg-gray-200 transition">
+                        Ajouter au panier
+                    </button>
+                </div>
+            </div>
         </div>
     </main>
+
+    <script>
+        const products = {
+            'tshirtmertra':  { title: 'Prophecy Tee V1', price: '65€', gsm: '350GSM', ext: 'jpg' },
+            'tshirtmertra2': { title: 'Prophecy Tee V2', price: '65€', gsm: '350GSM', ext: 'jpeg' },
+            'tshirtmertra3': { title: 'Prophecy Tee V3', price: '65€', gsm: '350GSM', ext: 'jpeg' },
+            'tshirtmertra4': { title: 'Prophecy Tee V4', price: '70€', gsm: '350GSM', ext: 'jpeg' },
+            'hautmertra':    { title: 'Signature Hoodie', price: '120€', gsm: 'Heavyweight', ext: 'jpg' },
+            'basmertra':     { title: 'Jogging Pant V1', price: '145€', gsm: 'Limited', ext: 'jpg' },
+            'basmertra2':    { title: 'Jogging Pant V2', price: '145€', gsm: 'Tech Finish', ext: 'jpg' },
+            'basmertra3':    { title: 'Jogging Pant V3', price: '155€', gsm: 'Brutalist Cut', ext: 'jpg' }
+        };
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const itemKey = urlParams.get('item');
+        const data = products[itemKey];
+
+        if (data) {
+            document.getElementById('product-title').innerText = data.title;
+            document.getElementById('product-price').innerText = data.price;
+            document.getElementById('product-desc').innerHTML = `<p>— ${data.gsm}</p><p>— Coton Organique Premium</p><p>— Confectionné au Portugal</p>`;
+            
+            // Image principale
+            const mainImg = document.createElement('img');
+            mainImg.src = `${itemKey}.${data.ext}`;
+            mainImg.className = "w-full grayscale hover:grayscale-0 transition duration-1000";
+            document.getElementById('main-image-container').appendChild(mainImg);
+
+            // Logique des images de détails (.1, .2, .3)
+            // Pour V1 (itemKey sans chiffre), on utilise itemKey + "1"
+            // Pour V2/V3 (itemKey avec chiffre), on utilise itemKey directement
+            const baseDetailName = /\d$/.test(itemKey) ? itemKey : itemKey + "1";
+
+            const grid = document.getElementById('detail-images-grid');
+            [1, 2, 3].forEach(num => {
+                const img = document.createElement('img');
+                img.src = `${baseDetailName}.${num}.${data.ext}`;
+                img.className = "w-full aspect-square object-cover grayscale hover:grayscale-0 transition duration-500";
+                img.onerror = () => img.style.display = 'none'; // Cache si l'image n'existe pas
+                grid.appendChild(img);
+            });
+        } else {
+            // Si le produit n'existe pas dans la liste ci-dessus
+            document.getElementById('product-title').innerText = "Produit Introuvable";
+            document.getElementById('product-title').classList.add('text-red-500');
+        }
+    </script>
 </body>
 </html>
